@@ -56,21 +56,53 @@ $${xnadir_DEFINES} \
 #
 libxnadir_HEADERS += \
 \
-$${XNADIR_SRC}/xos/platform/os/microsoft/Windows.hxx \
-$${XNADIR_SRC}/xos/platform/os/microsoft/windows/Handle.hxx \
+$${XNADIR_SRC}/xos/base/Acquired.hxx \
+$${XNADIR_SRC}/xos/base/Allocated.hxx \
+$${XNADIR_SRC}/xos/base/Array.hxx \
+$${XNADIR_SRC}/xos/base/Attached.hxx \
+$${XNADIR_SRC}/xos/base/Base.hxx \
+$${XNADIR_SRC}/xos/base/Chars.hxx \
+$${XNADIR_SRC}/xos/base/Created.hxx \
+$${XNADIR_SRC}/xos/base/Exception.hxx \
+$${XNADIR_SRC}/xos/base/Joined.hxx \
+$${XNADIR_SRC}/xos/base/Locked.hxx \
+$${XNADIR_SRC}/xos/base/Logged.hxx \
+$${XNADIR_SRC}/xos/base/Opened.hxx \
+$${XNADIR_SRC}/xos/base/Ran.hxx \
+$${XNADIR_SRC}/xos/base/Signaled.hxx \
+$${XNADIR_SRC}/xos/base/Sleep.hxx \
+$${XNADIR_SRC}/xos/base/std/String.hxx \
+$${XNADIR_SRC}/xos/base/String.hxx \
+$${XNADIR_SRC}/xos/base/Suspended.hxx \
+$${XNADIR_SRC}/xos/base/Waited.hxx \
 \
 $${XNADIR_SRC}/xos/lib/xnadir/Version.h \
 $${XNADIR_SRC}/xos/lib/xnadir/Version.hxx \
-\
 
 # libxnadir SOURCES
 #
 libxnadir_SOURCES += \
 \
-$${XNADIR_SRC}/xos/platform/os/microsoft/Windows.cxx \
-$${XNADIR_SRC}/xos/platform/os/microsoft/windows/Handle.cxx \
+$${XNADIR_SRC}/xos/base/Acquired.cxx \
+$${XNADIR_SRC}/xos/base/Allocated.cxx \
+$${XNADIR_SRC}/xos/base/Array.cxx \
+$${XNADIR_SRC}/xos/base/Attached.cxx \
+$${XNADIR_SRC}/xos/base/Base.cxx \
+$${XNADIR_SRC}/xos/base/Chars.cxx \
+$${XNADIR_SRC}/xos/base/Created.cxx \
+$${XNADIR_SRC}/xos/base/Exception.cxx \
+$${XNADIR_SRC}/xos/base/Joined.cxx \
+$${XNADIR_SRC}/xos/base/Locked.cxx \
+$${XNADIR_SRC}/xos/base/Logged.cxx \
+$${XNADIR_SRC}/xos/base/Opened.cxx \
+$${XNADIR_SRC}/xos/base/Ran.cxx \
+$${XNADIR_SRC}/xos/base/Signaled.cxx \
+$${XNADIR_SRC}/xos/base/Sleep.cxx \
+$${XNADIR_SRC}/xos/base/std/String.cxx \
+$${XNADIR_SRC}/xos/base/String.cxx \
+$${XNADIR_SRC}/xos/base/Suspended.cxx \
+$${XNADIR_SRC}/xos/base/Waited.cxx \
 \
 $${XNADIR_SRC}/xos/lib/xnadir/Version.cxx \
-\
 
 ########################################################################

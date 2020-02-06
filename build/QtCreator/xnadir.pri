@@ -1,5 +1,5 @@
 ########################################################################
-# Copyright (c) 1988-2019 $organization$
+# Copyright (c) 1988-2020 $organization$
 #
 # This software is provided by the author and contributors ``as is''
 # and any express or implied warranties, including, but not limited to,
@@ -16,10 +16,20 @@
 #   File: xnadir.pri
 #
 # Author: $author$
-#   Date: 6/19/2019
+#   Date: 2/4/2020
 #
 # build QtCreator .pri file for xnadir
 ########################################################################
+
+UNAME = $$system(uname)
+
+contains(UNAME,Uname) {
+BUILD_OS = XNADIR_OS
+} else {
+BUILD_OS = os
+} # contains(UNAME,Uname)
+
+#BUILD_CPP_VERSION = 11
 
 ########################################################################
 # xos
@@ -44,11 +54,34 @@ build_xos_FRAMEWORKS += \
 build_xos_LIBS += \
 
 ########################################################################
+# xrostra
+#
+# pkg-config --cflags --libs xrostra
+#
+
+# build xrostra INCLUDEPATH
+#
+build_xrostra_INCLUDEPATH += \
+
+# build xrostra DEFINES
+#
+build_xrostra_DEFINES += \
+
+# build xrostra FRAMEWORKS
+#
+build_xrostra_FRAMEWORKS += \
+
+# build xrostra LIBS
+#
+build_xrostra_LIBS += \
+
+########################################################################
 # xnadir
 
 # build xnadir INCLUDEPATH
 #
 build_xnadir_INCLUDEPATH += \
+$${build_xrostra_INCLUDEPATH} \
 $${build_xos_INCLUDEPATH} \
 
 
@@ -56,17 +89,18 @@ $${build_xos_INCLUDEPATH} \
 #
 build_xnadir_DEFINES += \
 $${build_xos_DEFINES} \
+$${build_xrostra_DEFINES} \
 
 
 # build xnadir FRAMEWORKS
 #
 build_xnadir_FRAMEWORKS += \
+$${build_xrostra_FRAMEWORKS} \
 $${build_xos_FRAMEWORKS} \
 
 
 # build xnadir LIBS
 #
 build_xnadir_LIBS += \
+$${build_xrostra_LIBS} \
 $${build_xos_LIBS} \
-
-

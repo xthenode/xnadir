@@ -1,5 +1,5 @@
 ########################################################################
-# Copyright (c) 1988-2019 $organization$
+# Copyright (c) 1988-2020 $organization$
 #
 # This software is provided by the author and contributors ``as is''
 # and any express or implied warranties, including, but not limited to,
@@ -16,10 +16,11 @@
 #   File: xnadir.pri
 #
 # Author: $author$
-#   Date: 6/19/2019
+#   Date: 2/4/2020
 #
-# Os QtCreator .pri file for xnadir
+# QtCreator .pri file for xnadir
 ########################################################################
+
 UNAME = $$system(uname)
 
 contains(UNAME,Darwin) {
@@ -32,10 +33,24 @@ XNADIR_OS = windows
 } # contains(UNAME,Linux)
 } # contains(UNAME,Darwin)
 
+contains(BUILD_OS,XNADIR_OS) {
+BUILD_OS = $${XNADIR_OS}
+} else {
 BUILD_OS = os
+} # contains(BUILD_OS,XNADIR_OS)
 
-#CONFIG += c++11
-#CONFIG += c++0x
+contains(BUILD_CPP_VERSION,10) {
+CONFIG += c++0x
+} else {
+contains(BUILD_CPP_VERSION,98|03|11|14|17) {
+CONFIG += c++$${BUILD_CPP_VERSION}
+} else {
+} # contains(BUILD_CPP_VERSION,98|03|11|14|17)
+} # contains(BUILD_CPP_VERSION,10)
+
+contains(XROSTRA_OS,linux) {
+QMAKE_CXXFLAGS += -fpermissive
+}
 
 ########################################################################
 # xos
@@ -60,6 +75,28 @@ xos_LIBS += \
 -l$${XOS_NAME} \
 
 ########################################################################
+# xrostra
+XROSTRA_THIRDPARTY_PKG_MAKE_BLD = $${XROSTRA_THIRDPARTY_PKG}/build/$${BUILD_OS}/$${BUILD_CONFIG}
+XROSTRA_THIRDPARTY_PRJ_MAKE_BLD = $${OTHER_BLD}/$${XROSTRA_THIRDPARTY_PRJ}/build/$${BUILD_OS}/$${BUILD_CONFIG}
+XROSTRA_THIRDPARTY_PKG_BLD = $${XROSTRA_THIRDPARTY_PKG}/build/$${BUILD_OS}/QtCreator/$${BUILD_CONFIG}
+XROSTRA_THIRDPARTY_PRJ_BLD = $${OTHER_BLD}/$${XROSTRA_THIRDPARTY_PRJ}/build/$${BUILD_OS}/QtCreator/$${BUILD_CONFIG}
+XROSTRA_PKG_BLD = $${OTHER_BLD}/$${XROSTRA_PKG}/build/$${BUILD_OS}/QtCreator/$${BUILD_CONFIG}
+XROSTRA_PRJ_BLD = $${OTHER_BLD}/$${XROSTRA_PRJ}/build/$${BUILD_OS}/QtCreator/$${BUILD_CONFIG}
+#XROSTRA_LIB = $${XROSTRA_THIRDPARTY_PKG_MAKE_BLD}/lib
+#XROSTRA_LIB = $${XROSTRA_THIRDPARTY_PRJ_MAKE_BLD}/lib
+#XROSTRA_LIB = $${XROSTRA_THIRDPARTY_PKG_BLD}/lib
+#XROSTRA_LIB = $${XROSTRA_THIRDPARTY_PRJ_BLD}/lib
+XROSTRA_LIB = $${XROSTRA_PKG_BLD}/lib
+#XROSTRA_LIB = $${XROSTRA_PRJ_BLD}/lib
+#XROSTRA_LIB = $${XNADIR_LIB}
+
+# xrostra LIBS
+#
+xrostra_LIBS += \
+-L$${XROSTRA_LIB}/lib$${XROSTRA_NAME} \
+-l$${XROSTRA_NAME} \
+
+########################################################################
 # xnadir
 
 # xnadir INCLUDEPATH
@@ -73,6 +110,7 @@ xnadir_DEFINES += \
 # xnadir LIBS
 #
 xnadir_LIBS += \
+$${xrostra_LIBS} \
 $${xos_LIBS} \
 $${build_xnadir_LIBS} \
 
@@ -88,5 +126,3 @@ xnadir_LIBS += \
 -lrt
 } else {
 } # contains(XNADIR_OS,linux)
-
-

@@ -1,5 +1,5 @@
 ########################################################################
-# Copyright (c) 1988-2019 $organization$
+# Copyright (c) 1988-2020 $organization$
 #
 # This software is provided by the author and contributors ``as is''
 # and any express or implied warranties, including, but not limited to,
@@ -16,7 +16,7 @@
 #   File: xnadir.pri
 #
 # Author: $author$
-#   Date: 6/19/2019
+#   Date: 2/4/2020
 #
 # QtCreator .pri file for xnadir
 ########################################################################
@@ -68,6 +68,45 @@ $${XOS_SRC} \
 xos_DEFINES += \
 
 ########################################################################
+# xrostra
+XROSTRA_VERSION_MAJOR = 0
+XROSTRA_VERSION_MINOR = 0
+XROSTRA_VERSION_RELEASE = 0
+XROSTRA_VERSION = $${XROSTRA_VERSION_MAJOR}.$${XROSTRA_VERSION_MINOR}.$${XROSTRA_VERSION_RELEASE}
+XROSTRA_NAME = xrostra
+XROSTRA_GROUP = $${XROSTRA_NAME}
+XROSTRA_SOURCE = source
+XROSTRA_DIR = $${XROSTRA_GROUP}/$${XROSTRA_NAME}-$${XROSTRA_VERSION}
+XROSTRA_PKG_DIR = $${XROSTRA_NAME}
+XROSTRA_HOME_BUILD = $${HOME}/build/$${XROSTRA_NAME}
+XROSTRA_HOME_BUILD_INCLUDE = $${XROSTRA_HOME_BUILD}/include
+XROSTRA_HOME_BUILD_LIB = $${XROSTRA_HOME_BUILD}/lib
+XROSTRA_THIRDPARTY_PKG = $${THIRDPARTY_PKG}/$${XROSTRA_DIR}
+XROSTRA_THIRDPARTY_PRJ = $${THIRDPARTY_PRJ}/$${XROSTRA_DIR}
+XROSTRA_THIRDPARTY_SRC = $${THIRDPARTY_SRC}/$${XROSTRA_PKG_DIR}
+XROSTRA_THIRDPARTY_SRC_GROUP = $${XROSTRA_NAME}
+XROSTRA_THIRDPARTY_SRC_NAME = $${XROSTRA_NAME}
+XROSTRA_THIRDPARTY_SRC_DIR = $${THIRDPARTY_SRC}/$${XROSTRA_THIRDPARTY_SRC_GROUP}/$${XROSTRA_THIRDPARTY_SRC_NAME} 
+XROSTRA_PKG = $${OTHER_PKG}/$${XROSTRA_PKG_DIR}
+XROSTRA_PRJ = $${OTHER_PRJ}/$${XROSTRA_PKG_DIR}
+#XROSTRA_SRC = $${XROSTRA_THIRDPARTY_SRC_DIR}
+#XROSTRA_SRC = $${XROSTRA_THIRDPARTY_PKG}/$${XROSTRA_SOURCE}
+#XROSTRA_SRC = $${XROSTRA_THIRDPARTY_PRJ}/$${XROSTRA_SOURCE}
+XROSTRA_SRC = $${XROSTRA_PKG}/$${XROSTRA_SOURCE}
+#XROSTRA_SRC = $${XROSTRA_PRJ}/$${XROSTRA_SOURCE}
+
+# xrostra INCLUDEPATH
+#
+xrostra_INCLUDEPATH += \
+$${XROSTRA_SRC} \
+
+# xrostra DEFINES
+#
+xrostra_DEFINES += \
+
+
+
+########################################################################
 # xnadir
 XNADIR_NAME = xnadir
 XNADIR_SOURCE = source
@@ -94,6 +133,7 @@ xnadir_DEFINES += RELEASE_BUILD
 #
 xnadir_INCLUDEPATH += \
 $${XNADIR_SRC} \
+$${xrostra_INCLUDEPATH} \
 $${xos_INCLUDEPATH} \
 $${build_xnadir_INCLUDEPATH} \
 
@@ -101,6 +141,7 @@ $${build_xnadir_INCLUDEPATH} \
 #
 xnadir_DEFINES += \
 $${xos_DEFINES} \
+$${xrostra_DEFINES} \
 $${build_xnadir_DEFINES} \
 
 # xnadir LIBS
