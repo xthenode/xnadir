@@ -13,30 +13,19 @@
 /// or otherwise) arising in any way out of the use of this software, 
 /// even if advised of the possibility of such damage.
 ///
-///   File: Version.hxx
+///   File: String.cxx
 ///
 /// Author: $author$
-///   Date: 6/19/2019
+///   Date: 5/5/2019
 ///////////////////////////////////////////////////////////////////////
-#ifndef _XOS_LIB_XNADIR_VERSION_HXX_
-#define _XOS_LIB_XNADIR_VERSION_HXX_
-
-#include "xos/lib/Version.hxx"
+#include "xos/base/std/String.hxx"
 
 namespace xos {
-namespace lib {
-namespace xnadir {
+namespace std {
 
-///////////////////////////////////////////////////////////////////////
-///  Class: Version
-///////////////////////////////////////////////////////////////////////
-class _EXPORTED_ Version {
-public:
-    static const lib::Version& Which();
-}; /// class _EXPORTED_ Version
+namespace based {
+} /// namespace based
 
-} /// namespace xnadir
-} /// namespace lib
+} /// namespace std
 } /// namespace xos
 
-#endif /// _XOS_LIB_XNADIR_VERSION_HXX_

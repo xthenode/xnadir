@@ -36,7 +36,7 @@ template
 <class TExtends = ::xos::console::lib::version::MainT< ::xos::lib::xnadir::Version >, 
  class TImplements = typename TExtends::Implements>
 
-class _EXPORT_CLASS MainT: virtual public TImplements, public TExtends {
+class _EXPORTED_ MainT: virtual public TImplements, public TExtends {
 public:
     typedef TImplements Implements;
     typedef TExtends Extends;
@@ -54,7 +54,7 @@ protected:
         int err = this->VersionRun(argc, argv, env);
         return err;
     }
-}; /// class _EXPORT_CLASS MainT
+}; /// class _EXPORTED_ MainT
 typedef MainT<> Main;
 
 } /// namespace xnadir

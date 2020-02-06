@@ -13,30 +13,31 @@
 /// or otherwise) arising in any way out of the use of this software, 
 /// even if advised of the possibility of such damage.
 ///
-///   File: Version.hxx
+///   File: Ran.hxx
 ///
 /// Author: $author$
-///   Date: 6/19/2019
+///   Date: 5/30/2019
 ///////////////////////////////////////////////////////////////////////
-#ifndef _XOS_LIB_XNADIR_VERSION_HXX_
-#define _XOS_LIB_XNADIR_VERSION_HXX_
+#ifndef _XOS_BASE_RAN_HXX_
+#define _XOS_BASE_RAN_HXX_
 
-#include "xos/lib/Version.hxx"
+#include "xos/base/Base.hxx"
 
 namespace xos {
-namespace lib {
-namespace xnadir {
 
+typedef Implement RanTImplements;
 ///////////////////////////////////////////////////////////////////////
-///  Class: Version
+///  Class: RanT
 ///////////////////////////////////////////////////////////////////////
-class _EXPORTED_ Version {
+template <class TImplements = RanTImplements>
+class _EXPORTED_ RanT: virtual public TImplements {
 public:
-    static const lib::Version& Which();
-}; /// class _EXPORTED_ Version
+    typedef TImplements Implements;
+    virtual void Run() {
+    }
+}; /// class _EXPORTED_ RanT
+typedef RanT<> Ran;
 
-} /// namespace xnadir
-} /// namespace lib
 } /// namespace xos
 
-#endif /// _XOS_LIB_XNADIR_VERSION_HXX_
+#endif /// _XOS_BASE_RAN_HXX_

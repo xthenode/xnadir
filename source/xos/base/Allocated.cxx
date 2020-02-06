@@ -13,30 +13,26 @@
 /// or otherwise) arising in any way out of the use of this software, 
 /// even if advised of the possibility of such damage.
 ///
-///   File: Version.hxx
+///   File: Allocated.cxx
 ///
 /// Author: $author$
-///   Date: 6/19/2019
+///   Date: 5/5/2019
 ///////////////////////////////////////////////////////////////////////
-#ifndef _XOS_LIB_XNADIR_VERSION_HXX_
-#define _XOS_LIB_XNADIR_VERSION_HXX_
-
-#include "xos/lib/Version.hxx"
+#include "xos/base/Allocated.hxx"
 
 namespace xos {
-namespace lib {
-namespace xnadir {
 
 ///////////////////////////////////////////////////////////////////////
-///  Class: Version
+///  Class: AllocateExceptionT
 ///////////////////////////////////////////////////////////////////////
-class _EXPORTED_ Version {
-public:
-    static const lib::Version& Which();
-}; /// class _EXPORTED_ Version
 
-} /// namespace xnadir
-} /// namespace lib
+///////////////////////////////////////////////////////////////////////
+///  Class: AllocatorT
+///////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////
+///  Class: AllocatedT
+///////////////////////////////////////////////////////////////////////
+
 } /// namespace xos
 
-#endif /// _XOS_LIB_XNADIR_VERSION_HXX_
